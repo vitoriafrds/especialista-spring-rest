@@ -27,6 +27,10 @@ public class TesteJpa {
 
             System.out.println(c.getTipo());
         });
+
+        System.out.println("Buscando cozinha cadastrada com o id 1");
+        Cozinha cozinha = cadastro.buscar(1);
+        System.out.printf("Cozinha do id = %d do tipo = %s \n", cozinha.getId(), cozinha.getTipo());
     }
 
     public static Cozinha buildCozinha(String tipo) {
