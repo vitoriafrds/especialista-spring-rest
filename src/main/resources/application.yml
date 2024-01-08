@@ -7,4 +7,5 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create
+      dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true

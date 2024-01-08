@@ -2,40 +2,37 @@ package br.com.algafood.especialistaspringrest.domain.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Restaurante {
+public class Permissao {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+    private int id;
 
     @Column
     private String nome;
 
-    @Column(name = "taxa_frete")
-    private BigDecimal taxaFrete;
+    @Column
+    private String descricao;
 
-    @ManyToOne
-    private Cozinha cozinha;
-
-    public Restaurante(Long id, String nome, BigDecimal taxaFrete) {
-        this.id = id;
-        this.nome = nome;
-        this.taxaFrete = taxaFrete;
+    public Permissao() {
     }
 
+    public Permissao(int id, String nome, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+    }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,28 +44,20 @@ public class Restaurante {
         this.nome = nome;
     }
 
-    public BigDecimal getTaxaFrete() {
-        return taxaFrete;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTaxaFrete(BigDecimal taxaFrete) {
-        this.taxaFrete = taxaFrete;
-    }
-
-    public Cozinha getCozinha() {
-        return cozinha;
-    }
-
-    public void setCozinha(Cozinha cozinha) {
-        this.cozinha = cozinha;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Restaurante that = (Restaurante) o;
-        return Objects.equals(id, that.id);
+        Permissao permissao = (Permissao) o;
+        return id == permissao.id;
     }
 
     @Override
